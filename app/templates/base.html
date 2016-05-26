@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    {% if SNLab %}
+    {% if Title %}
     <title>{{ Title }} -- SNLab</title>
     {% else %}
     <title>Welcome to SNLab</title>
@@ -17,19 +17,30 @@
 <body>
     <div class="container">
         <div class="col-md-9">
-            <img src={{ url_for("static", filename="images/logo.png") }} style="width:300px"/>
-            <div class="btn-group" role="group" aira-label="Labels" style="margin-bottom: 10px"> <button type="button" class="btn btn-default">About</button>
-                <button type="button" class="btn btn-default">People</button>
-                <button type="button" class="btn btn-default">Papers</button>
-                <button type="button" class="btn btn-default">Projects</button>
-                <button type="button" class="btn btn-default">Software</button>
-                <button type="button" class="btn btn-default">Blog</button>
-                <button type="button" class="btn btn-default">Sponsors</button>
-                <button type="button" class="btn btn-default">Photos</button>
+            <div class="row">
+                <img src={{ url_for("static", filename="images/logo.png") }} style="width:300px"/>
+            </div>
+            <div class="row">
+                <div class="btn-group" role="group" aira-label="Labels" style="margin-bottom: 10px"> <button type="button" class="btn btn-default">About</button>
+                    <button type="button" class="btn btn-default">People</button>
+                    <button type="button" class="btn btn-default">Papers</button>
+                    <button type="button" class="btn btn-default">Projects</button>
+                    <button type="button" class="btn btn-default">Software</button>
+                    <button type="button" class="btn btn-default">Blog</button>
+                    <button type="button" class="btn btn-default">Sponsors</button>
+                    <button type="button" class="btn btn-default">Photos</button>
+                </div>
             </div>
         </div>
         <div class="col-md-3">
-            <p class="text-right"><a style="margin-right:0">Login</a></p>
+            <div class="page-header" style="margin-top:20px">
+                {% if not current_user or current_user.is_authenticated == False  %}
+                    <p class="text-right"><a href="{{ url_for('login') }}"> Log In </a></p>
+                    <p class="text-right"><a href="{{ url_for('register') }}"> Register </a></p>
+                {% else %}
+                    <p class="text-right">Hello, {{ current_user.username }} &nbsp;&nbsp;<a href="{{ url_for('logout') }}"> Log Out </a></p>
+                {% endif %}
+            </div>
         </div>
     </div>
 
