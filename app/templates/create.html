@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+            <div class="col-lg-3 hidden-md"></div>
+            <div class="col-lg-6 col-md-12">
+                <form action="" method="post" name="createPost">
+                    <div class="page-header">
+                        <h3>Create a Post</h3>
+                    </div>
+                    <div class="input-group">
+                        <label id="labelTitle" class="input-group-addon">Title: </label>
+                        {{ form.title(**{'class':'form-control', 'aria-describedby':'labelTitle'}) }}
+                    </div>
+                    <div class="input-group">
+                        <label id="labelBody" class="input-group-addon">Body: </label>
+                        {{ form.content(**{'class':'form-control', 'aria-describedby':'labelBody'}) }}
+                    </div>
+                    <div class="input-group">
+                        <label id="labelType" class="input-group-addon">Type: </label>
+                        {{ form.type(**{'class':'form-control', 'aria-describedby':'labelType'}) }}
+                    </div>
+                    <br>
+                    <input type="submit" name="submit" value="Submit" class="btn btn-primary">
+                </form>
+            </div>
+            <div class="col-lg-3 hidden-md"></div>
+    </div>
+{% endblock %}
