@@ -1,10 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+        <div class="col-md-9 col-sm-12">
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <img src={{ url_for("static", filename="images/SNLAB.png") }} width="260px"/>
+                </div>
+                <div class="col-md-8 col-sm-12">
+                    <div class="page-header" style="margin-top:10px">
+                        <h4>SNLab: System Network Laboratory</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <div class="row page-header" style="margin-top:10px">
+                        <div class="col-md-8 col-xs-8"><b>Events</b></div>
+                        <div class="col-md-4 col-xs-4"><a href="#">&gt;&gt;More</a></div>
+                    </div>
+                    <div>
+                        Events Content
+                    </div>
+                </div>
 
-</body>
-</html>
+                <div class="col-md-4 col-sm-12">
+                    <div class="row page-header" style="margin-top:10px">
+                        <div class="col-md-8 col-xs-8"><b>Blog</b></div>
+                        <div class="col-md-4 col-xs-4"><a href="#">&gt;&gt;More</a></div>
+                    </div>
+                    <div>
+                        Blog Content
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <div class="row page-header" style="margin-top:10px">
+                        <div class="col-md-8 col-xs-8"><b>News</b></div>
+                        <div class="col-md-4 col-xs-4"><a href="#">&gt;&gt;More</a></div>
+                    </div>
+                    <div>
+                        News Content
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-header">
+                        <h4>Featured Project: ALTO</h4>
+                    </div>
+                </div>
+            </div>
+            </div>
+        <div class="col-md-3 hidden-sm">
+            Right Panel
+        </div>
+    </div>
+{% endblock %}
