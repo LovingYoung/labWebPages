@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+<script type="text/javascript" charset="utf-8" src="{{ url_for('static', filename='ueditor/ueditor.config.js') }}"></script>
+<script type="text/javascript" charset="utf-8" src="{{ url_for('static', filename='ueditor/ueditor.all.min.js') }}"> </script>
+<script type="text/javascript" charset="utf-8" src="{{ url_for('static', filename='ueditor/lang/en/en.js') }}"></script>
+<script type="text/javascript">
+    var ue = UE.getEditor('editor', {
+        serverUrl: "/upload/"
+    })
+</script>
+    <div class="container">
+            <div class="col-lg-1 hidden-md"></div>
+            <div class="col-lg-10 col-md-12">
+                <form action="" method="post" name="createPost">
+                    <div class="page-header">
+                        <h3>Create a Post</h3>
+                    </div>
+                    <div class="input-group">
+                        <label id="labelTitle" class="input-group-addon">Title: </label>
+                        {{ form.title(**{'class':'form-control', 'aria-describedby':'labelTitle'}) }}
+                    </div>
+                    <div class="input-group">
+{#                        <label id="labelBody" class="input-group-addon">Body: </label>#}
+{#                        {{ form.content(**{'class':'form-control', 'aria-describedby':'labelBody'}) }}#}
+                        <script id="editor" type="text/plain" name="content"></script>
+                    </div>
+                    <div class="input-group">
+                        <label id="labelType" class="input-group-addon">Type: </label>
+                        {{ form.type(**{'class':'form-control', 'aria-describedby':'labelType'}) }}
+                    </div>
+                    <br>
+                    <input type="submit" name="submit" value="Submit" class="btn btn-primary">
+                </form>
+            </div>
+            <div class="col-lg-1 hidden-md"></div>
+    </div>
+{% endblock %}

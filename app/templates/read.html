@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title" style="text-align: center">
+                    <h1>{{ data.title }}</h1>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-sm-12" style="text-align: center">
+                        <p>Type: <a href="#">{{ data.type }}</a></p>
+                    </div>
+                    <div class="col-md-4 col-sm-12" style="text-align: center">
+                        <p>ModifiedTime: <a href="#">{{ data.modifiedTime }}</a> </p>
+                    </div>
+                    <div class="col-md-4 col-sm-12" style="text-align: center">
+                        <p><a href="{{ url_for('index') }}">Back to Index</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                {{ data.content | safe }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

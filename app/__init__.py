@@ -13,4 +13,4 @@ app.config.from_object('config')
 login_manager.init_app(app)
 db = SQLAlchemy(app)
 
-from app import views, models
+from app import views, models, uploader
