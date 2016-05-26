@@ -1,0 +1,40 @@
+
+{% extends "base.html" %}
+{% block content %}
+    <form action="" method="post" name="register">
+        <div class="col-lg-3 hidden-md"></div>
+        <div class="col-lg-6 col-md-12">
+            <div class="page-header">
+                <h3>Register</h3>
+            </div>
+            <div class="input-group">
+                <label id="labelUsername" class="input-group-addon">Username</label>
+                {{ form.username(**{'class':'form-control', 'placeholder':'Username', 'aria-describedby':'labelUsername'})}}
+            </div>
+            {% for error in form.username.errors %}
+                <b style="color:red">{{ error }}</b>
+            {% endfor %}
+            <br />
+            <div class="input-group">
+                <label id="labelPassword" class="input-group-addon">Password</label>
+                {{ form.password(**{'class':'form-control', 'placeholder':'Password', 'aria-describedby':'labelPassword'})}}
+            </div>
+            {% for error in form.password.errors %}
+                <b style="color:red">{{ error }}</b>
+            {% endfor %}
+            <br />
+            <div class="input-group">
+                <label id="labelConfirm" class="input-group-addon">Confirm</label>
+                {{ form.confirm(**{'class':'form-control', 'placeholder':'Confirm', 'aria-describedby':'labelConfirm'})}}
+            </div>
+            {% for error in form.confirm.errors %}
+                <b style="color:red">{{ error }}</b>
+            {% endfor %}
+            <br />
+            <input type="submit" name="submit" value="Submit" class="btn btn-success">
+            <p>Have Account? <a href="{{ url_for('login') }}">Log In</a> </p>
+
+        </div>
+        <div class="col-lg-3 hidden-md"></div>
+    </form>
+{% endblock %}
