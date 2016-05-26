@@ -222,3 +222,11 @@ def create():
         return redirect('index')
     else:
         return render_template('create.html', form=form)
+
+@app.route('/read/<int:id>')
+def read(id):
+    data = models.Post.query.filter_by(postid=id).first()
+    if data is None:
+        flash("Sorry, Invalid URL")
+        return redirect('index')
+    return render_template('read.html', data=data)
