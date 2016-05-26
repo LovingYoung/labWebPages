@@ -34,4 +34,4 @@ class Post(db.Model):
     title = db.Column(db.String(128))
 
     def __repr__(self):
-        return "<UserID: %r, "
+        return "<PostID: %r>, " % (self.postid)
