@@ -153,6 +153,7 @@ def login():
             return redirect(next)
     return render_template('login.html', form=form)
 
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     form = forms.RegisterForm(request.form)
@@ -168,13 +169,16 @@ def register():
         return redirect('login')
     return render_template('register.html', form=form)
 
+
 @login_manager.unauthorized_handler
 def unauthorized():
     return redirect('login')
 
+
 @login_manager.user_loader
 def load_user(user_id):
     return models.User.query.get(int(user_id))
+
 
 @app.route('/logout')
 @login_required
@@ -183,32 +187,23 @@ def logout():
     flash("Log out Success")
     return redirect('index')
 
+
 @app.route('/manage')
 @login_required
 def manage():
-    titleArgs = request.args.get('title')
-    typeArgs = request.args.get('type')
-    data = None
-    if titleArgs is None and typeArgs is None:
-        data = models.Post.query.all()
-    elif titleArgs is None:
-        data = models.Post.query.filter_by(type=typeArgs).all()
-    elif typeArgs is None:
-        data = models.Post.query.filter_by(title=titleArgs).all()
+    Type = request.args.get('Type')
+    if Type == "Posts":
+        data = models.Post.query.order_by(models.Post.modifiedTime.desc()).all()
+        return render_template('managePosts.html', data = data)
+    elif Type == "Peoples":
+        data = models.People.query.order_by(models.People.firstname).all()
+        return render_template('managePeople.html', data = data)
+    elif Type == "Projects":
+        data = models.Project.query.order_by(models.Project.name).all()
+        return render_template('manageProjects.html', data = data)
     else:
-        data = models.Post.query.filter_by(type=typeArgs, title=titleArgs).all()
-    render_template("manage.html", data=data)
-    #TODO: do manage.html
+        return render_template('manage.html')
 
-@app.route('/modify/<int:postid>', methods=['GET', 'POST'])
-@login_required
-def modify(postid):
-    post = models.Post.query.filter_by(postid=postid).first()
-    if post is None:
-        flash("Can't find Post with ID " + str(postid))
-        redirect("manage")
-    render_template("modify.html", title=post.title, content=post.content, type=post.type)
-    #TODO: do modify.html
 
 @app.route('/create', methods=['POST', 'GET'])
 @login_required
@@ -332,6 +327,7 @@ def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1] in app.config['ALLOWED_EXTENSIONS']
 
 @app.route("/addProject", methods=['GET', 'POST'])
+@login_required
 def addProject():
     form = forms.ProjectForm(request.form)
     if request.method == 'POST' and form.validate():
