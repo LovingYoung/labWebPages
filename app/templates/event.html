@@ -1,3 +1,31 @@
-<html>
-event
-</html>
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+	<div class="col-md-9 col-xs-12">	
+		<h3 class="page-header"><b>Events</b></h3> 
+		<div>
+			<h4 class="text-muted" style="margin-bottom:20px;"><b>Upcoming Events</b></h4>
+			{% for event in cur_events %}
+			<div style="margin-bottom:15px;">
+				<h4><a href={{url_for(event.src)}}> {{event.title}} </a></h4>
+				<h5>{{event.time}}</h5>
+				<h5>{{event.brief}}</h5>
+			</div>
+			{% endfor %}
+		</div>
+		<br/>
+		<div>
+			<h4 class="text-muted" style="margin-bottom:20px;"><b>Past Events</b></h4>
+			{% for event in past_events %}
+			<div style="margin-bottom:15px;">
+				<h4><a href={{url_for(event.src)}}> {{event.title}} </a></h4>
+				<h5>{{event.time}}</h5>
+				<h5>{{event.brief}}</h5>
+			</div>
+			{% endfor %}
+		</div>
+		
+	</div>
+</div>
+
+{% endblock%}

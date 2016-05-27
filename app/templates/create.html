@@ -9,22 +9,22 @@
     })
 </script>
     <div class="container">
-            <div class="col-lg-1 hidden-md"></div>
+            {#<div class="col-lg-1 hidden-md"></div>#}
             <div class="col-lg-10 col-md-12">
                 <form action="" method="post" name="createPost">
-                    <div class="page-header">
+                    <div >
                         <h3>Create a Post</h3>
                     </div>
-                    <div class="input-group">
+                    <div class="input-group" style="margin-bottom:10px;">
                         <label id="labelTitle" class="input-group-addon">Title: </label>
                         {{ form.title(**{'class':'form-control', 'aria-describedby':'labelTitle'}) }}
                     </div>
-                    <div class="input-group">
+                    <div class="input-group" style="margin-bottom:10px;">
 {#                        <label id="labelBody" class="input-group-addon">Body: </label>#}
 {#                        {{ form.content(**{'class':'form-control', 'aria-describedby':'labelBody'}) }}#}
                         <script id="editor" type="text/plain" name="content"></script>
                     </div>
-                    <div class="input-group">
+                    <div class="input-group" style="margin-bottom:10px;">
                         <label id="labelType" class="input-group-addon">Type: </label>
                         {{ form.type(**{'class':'form-control', 'aria-describedby':'labelType'}) }}
                     </div>

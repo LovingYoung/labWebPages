@@ -230,3 +230,41 @@ def read(id):
         flash("Sorry, Invalid URL")
         return redirect('index')
     return render_template('read.html', data=data)
+
+
+@app.route('/about')
+def about():
+	return render_template("about.html");
+@app.route('/people')
+def people():
+	return render_template("people.html");
+
+@app.route('/paper')
+def paper():
+	return render_template("paper.html");
+@app.route('/project')
+def project():
+	return render_template("project.html");
+@app.route('/software')
+def software():
+	return render_template("software.html");
+@app.route('/blog')
+def blog():
+	return render_template("blog.html");
+
+@app.route('/sponsor')
+def sponsor():
+	return render_template("sponsor.html");
+@app.route('/event')
+def event():
+	return render_template("event.html");
+@app.route('/news')
+def news():
+	return render_template("news.html");
+
+
+
+
+
+
+
