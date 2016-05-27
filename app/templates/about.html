@@ -1,3 +1,8 @@
-<html>
-about
-</html>
+{% extends 'base.html' %}
+{% block content %}
+    {% if data is none %}
+        <h1 style="color: red">Nothing to show</h1>
+    {% else %}
+        {# TODO: create about page #}
+    {% endif %}
+{% endblock %}

@@ -235,7 +235,8 @@ def read(id):
 
 @app.route('/about')
 def about():
-    return render_template("about.html")
+    post = models.Post.query.filter_by(type='about').order_by(models.Post.modifiedTime.desc()).first()
+    return render_template("about.html", data=post)
 
 
 @app.route('/people')
