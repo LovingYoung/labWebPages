@@ -35,3 +35,15 @@ class Post(db.Model):
 
     def __repr__(self):
         return "<PostID: %r>, " % (self.postid)
+
+class People(db.Model):
+    userid = db.Column(db.Integer, db.ForeignKey('user.id'))
+    peopleid = db.Column(db.Integer, primary_key=True, nullable=False)
+    firstname = db.Column(db.String(64))
+    lastname = db.Column(db.String(64))
+    position = db.Column(db.String(64))
+    personalpage = db.Column(db.String(256))
+    email = db.Column(db.String(64))
+    createdTime = db.Column(db.DateTime)
+    modifiedTime = db.Column(db.DateTime)
+    photo = db.Column(db.String(256))
