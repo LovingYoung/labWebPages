@@ -8,7 +8,7 @@
             <h3>Directors</h3>
         </div>
         {% for person in data['director'] %}
-            <div class="col-md-6 col-sm-12">
+            <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="thumbnail">
                     <img src="{{url_for('static',filename=('uploads/'+ person.photo)) }}" alt="{{ person.firstname + person.lastname }}" />
                     <div class="caption">
@@ -27,7 +27,7 @@
                     <h3>Faculty</h3>
                 </div>
                 {% for person in data['faculty'] %}
-                    <div class="col-md-6 col-sm-12">
+                    <div class="col-md-3 col-sm-6 col-xs-12">
                         <div class="thumbnail">
                             <img src="{{url_for('static',filename=('uploads/'+ person.photo)) }}" alt="{{ person.firstname + person.lastname }}" />
                             <div class="caption">
@@ -46,7 +46,7 @@
                     <h3>Visiting Researchers</h3>
                 </div>
                 {% for person in data['visitingresearcher'] %}
-                    <div class="col-md-6 col-sm-12">
+                    <div class="col-md-3 col-sm-6 col-xs-12">
                         <div class="thumbnail">
                             <img src="{{url_for('static',filename=('uploads/'+ person.photo)) }}" alt="{{ person.firstname + person.lastname }}" />
                             <div class="caption">
@@ -64,7 +64,7 @@
                     <h3>Postdocs</h3>
                 </div>
                 {% for person in data['postdoc'] %}
-                    <div class="col-md-6 col-sm-12">
+                    <div class="col-md-3 col-sm-6 col-xs-12">
                         <div class="thumbnail">
                             <img src="{{url_for('static',filename=('uploads/'+ person.photo)) }}" alt="{{ person.firstname + person.lastname }}" />
                             <div class="caption">
@@ -82,7 +82,7 @@
                     <h3>Graduate Students</h3>
                 </div>
                 {% for person in data['graduatestudent'] %}
-                    <div class="col-md-6 col-sm-12">
+                    <div class="col-md-3 col-sm-6 col-xs-12">
                         <div class="thumbnail">
                             <img src="{{url_for('static',filename=('uploads/'+ person.photo)) }}" alt="{{ person.firstname + person.lastname }}" />
                             <div class="caption">
@@ -100,7 +100,7 @@
                     <h3>Undergraduates</h3>
                 </div>
                 {% for person in data['undergraduate'] %}
-                    <div class="col-md-6 col-sm-12">
+                    <div class="col-md-3 col-sm-6 col-xs-12">
                         <div class="thumbnail">
                             <img src="{{url_for('static',filename=('uploads/'+ person.photo)) }}" alt="{{ person.firstname + person.lastname }}" />
                             <div class="caption">
@@ -118,7 +118,7 @@
                     <h3>Directors</h3>
                 </div>
                 {% for person in data['staff'] %}
-                    <div class="col-md-6 col-sm-12">
+                    <div class="col-md-3 col-sm-6 col-xs-12">
                         <div class="thumbnail">
                             <img src="{{url_for('static',filename=('uploads/'+ person.photo)) }}" alt="{{ person.firstname + person.lastname }}" />
                             <div class="caption">
@@ -138,7 +138,7 @@
                     <h3>Alumni</h3>
                 </div>
                 {% for person in data['alumni'] %}
-                    <div class="col-md-6 col-sm-12">
+                    <div class="col-md-3 col-sm-6 col-xs-12">
                         <div class="thumbnail">
                             <img src="{{url_for('static',filename=('uploads/'+ person.photo)) }}" alt="{{ person.firstname + person.lastname }}" />
                             <div class="caption">
