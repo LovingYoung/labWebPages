@@ -3,15 +3,10 @@
     {% if data is none %}
         <h1 style="color: red">Ngmailothing to show</h1>
     {% else %}
-        {#
-            para1: data(Type: models.Post)
-            para2: user(Type: models.User)
-         #}
-        {# TODO: create about page #}
 <div class="container">
 	<div class="col-md-9">
 		<div class="page-header"><h3><b>About</b></h3></div>
-		<div class="text-muted">{{data.content}}</div>
+		<div class="text-muted">{{data.content|safe}}</div>
 	</div>
 </div>
     {% endif %}
