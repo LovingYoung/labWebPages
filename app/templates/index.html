@@ -35,7 +35,7 @@
 		   {% for blog in blogs%}
 		    <div style="margin-bottom:10px">
 			<div class="col-md-6 col-xs-6">
-			<img src={{url_for("static",filename="{{blog.person}}")}} class="img-thumbnail" alt="person"></div>
+			<img src={{url_for("static",filename=blog.person)}} class="img-thumbnail" alt="person"></div>
 			<div class="col-md-6 col-xs-6">	
 				<a href={{url_for(blog.src)}}>{{blog.content}}-{{blog.time}}</a>
 			</div>
@@ -67,7 +67,7 @@
             </div>
          </div>
 	 <div class="col-md-3 hidden-sm">
-		<h4 class="page-header" style="margin:0px">Cooperation Partners</h4>
+		<h4 class="page-header" style="margin:0px">Partnership</h4>
 		{% for sponsor in sponsors%}
 		<img class="col-md-4" src={{url_for(sponsor.img)}} alt="sponsor"/>
 		{% endfor %}

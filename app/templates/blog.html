@@ -1,4 +1,19 @@
 {% extends 'base.html' %}
-<html>
-blog
-</html>
+{% block content %}
+<div class="container">
+	<div class="col-md-12">
+		<div class="page-header"><h3><b>Blogs</b></h3></div>
+		<div class="text-muted" style="margin-bottom:30px"><h3>Latest posts</h3></div>
+		<div style="margin-bottom:20px">
+			<div class="col-md-2 hidden-xs">
+			<img src={{url_for("static",filename="images/pic.jpg")}} class="img-thumbnail" alt="person">
+			</div>
+			<div class="col-md-8 col-xs-12">	
+				<a href="#">jljhjlkljkhjlkielkgjh</a>
+				<p><h5>Posted on <font color="blue">TIME</font> by <font color="blue">NAME</font></h5></p>
+			</div>
+		</div>
+	</div>
+</div>
+	
+{% endblock %}
