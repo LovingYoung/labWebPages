@@ -65,3 +65,4 @@ target/
 .idea/
 
 *.db
+db_repsitory/
