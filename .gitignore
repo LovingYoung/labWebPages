@@ -65,6 +65,7 @@ target/
 .idea/
 
 *.db
+app.db
 db_repsitory/
 app/static/ueditor/php/upload/
 app/uploads/
