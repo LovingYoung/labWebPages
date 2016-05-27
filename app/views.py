@@ -255,7 +255,7 @@ def people():
                 i += 1
         return render_template("people.html", data=data)
     else:
-        data = models.People.query.filter_by(peoplei=id).first()
+        data = models.People.query.filter_by(peopleid=id).first()
         if data is None:
             return "<h1>404 Not Found</h1>"
         return render_template("PeopleDetails.html", data=data)
@@ -268,7 +268,16 @@ def paper():
 
 @app.route('/project')
 def project():
-    return render_template("project.html")
+    id = request.args.get('id')
+    if id is None or id == "":
+        data = models.Project.query.order_by(models.Project.name).all()
+        return render_template("project.html",data=data)
+    else:
+        data = models.Project.query.filter_by(projectid=id).first()
+        user = None
+        if data is not None:
+            user = data.author
+        return render_template("ProjectDetails.html", data = data, user = user)
 
 
 @app.route('/software')
