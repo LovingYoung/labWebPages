@@ -239,7 +239,7 @@ def about():
     user = None
     if post is not None:
         user = post.author
-    return render_template("about.html", data=post, uesr=user)
+    return render_template("about.html", data=post, user=user)
 
 
 @app.route('/people')
