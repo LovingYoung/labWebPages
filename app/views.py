@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, flash, make_response
+from flask import render_template, request, redirect, flash, make_response,url_for
 from app import app, forms, db, models, login_manager
 from app.uploader import Uploader
 from flask.ext.login import current_user, login_required, login_user, logout_user
@@ -358,7 +358,7 @@ def addPerson():
 
 def allowed_file(filename, extension=None):
     if extension is None:
-        extension = app.config['ALLOWED_EXT']
+        extension = app.config['ALLOWED_EXTENSIONS']
     return '.' in filename and filename.rsplit('.', 1)[1] in extension
 
 
