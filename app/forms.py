@@ -15,7 +15,7 @@ def getPostChoice():
     a.append(('blog', 'Blog'))
     a.append(('paper', 'Paper'))
     a.append(('sponsor', 'Sponsor'))
-    return a;
+    return a
 
 def getPosition():
     a = []
@@ -47,7 +47,7 @@ class LoginForm(Form):
 
 class PostForm(Form):
     title = StringField('Username', [validators.DataRequired(message="Please input title"), validators.Length(max=120, message="Please decrease title length to 120 letters or less")])
-    content = StringField('Password', [validators.DataRequired(message='Please input content')])
+    content = StringField('Content', [validators.DataRequired(message='Please input content')])
     type = SelectField('Type', [validators.DataRequired(message='Please select the Type')], choices=getPostChoice())
 
 class PeopleForm(Form):
@@ -56,4 +56,9 @@ class PeopleForm(Form):
     position = SelectField('Position', [validators.DataRequired(message="Please select Position")], choices=getPosition())
     personalpage = StringField('PersonalPage')
     email = StringField('Email', [validators.Email(message="Please input valid Email"), validators.DataRequired(message="Please input your email")])
+    photo = FileField('Photo')
+
+class ProjectForm(Form):
+    name = StringField('ProjectName', [validators.DataRequired(message="Please input Project Name"), validators.Length(max=500, message="Please decreate project name to 500 letters or less")])
+    body = StringField('ProjectBody', [validators.DataRequired(message="Please input Project body")])
     photo = FileField('Photo')

@@ -47,3 +47,12 @@ class People(db.Model):
     createdTime = db.Column(db.DateTime)
     modifiedTime = db.Column(db.DateTime)
     photo = db.Column(db.String(256))
+
+class Project(db.Model):
+    userid = db.Column(db.Integer, db.ForeignKey('user.id'))
+    projectid = db.Column(db.Integer, primary_key=True, nullable=False)
+    name = db.Column(db.String(512))
+    body = db.Column(db.TEXT)
+    photo = db.Column(db.String(256))
+    createdTime = db.Column(db.DateTime)
+    modifiedTime = db.Column(db.DateTime)

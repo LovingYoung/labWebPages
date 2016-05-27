@@ -319,3 +319,34 @@ def addPerson():
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1] in app.config['ALLOWED_EXTENSIONS']
+
+@app.route("/addProject", methods=['GET', 'POST'])
+def addProject():
+    form = forms.ProjectForm(request.form)
+    if request.method == 'POST' and form.validate():
+        file = request.files[form.photo.name]
+        if file.filename == "":
+            flash("No file uploaded")
+            return render_template('addProject.html', form=form)
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            if os.path.isfile(path):
+                flash("File Exists, Please rename your file")
+                return render_template('addProject.html', form=form)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        else:
+            flash('File format not supported, Retry Please.')
+            return render_template('addProject.html', form=form)
+        project = models.Project(
+            userid = current_user.id,
+            name = form.name.data,
+            body = form.body.data,
+            photo = filename,
+            createdTime = datetime.datetime.now(),
+            modifiedTime = datetime.datetime.now()
+        )
+        db.session.add(project)
+        db.session.commit()
+        return redirect('index')
+    return render_template("addProject.html", form=form, title='Add new person')

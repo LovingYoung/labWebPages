@@ -1,10 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
-    <script type="text/javascript" charset="utf-8" src="{{ url_for('static', filename='ueditor/ueditor.config.js') }}"></script>
-    <script type="text/javascript" charset="utf-8" src="{{ url_for('static', filename='ueditor/ueditor.all.min.js') }}"> </script>
-    <script type="text/javascript" charset="utf-8" src="{{ url_for('static', filename='ueditor/lang/en/en.js') }}"></script>
     <div class="container">
-        {#<div class="col-lg-1 hidden-md"></div>#}
+        <div class="col-md-1"></div>
         <div class="col-lg-10 col-md-12">
             <form action="" method="post" name="addPerson" enctype="multipart/form-data">
                 <div >
@@ -56,6 +53,5 @@
                 <input type="submit" name="submit" value="Submit" class="btn btn-primary">
             </form>
         </div>
-        <div class="col-lg-1 hidden-md"></div>
     </div>
 {% endblock %}

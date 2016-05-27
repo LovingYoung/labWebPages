@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <script type="text/javascript" charset="utf-8" src="{{ url_for('static', filename='ueditor/ueditor.config.js') }}"></script>
+    <script type="text/javascript" charset="utf-8" src="{{ url_for('static', filename='ueditor/ueditor.all.min.js') }}"> </script>
+    <script type="text/javascript" charset="utf-8" src="{{ url_for('static', filename='ueditor/lang/en/en.js') }}"></script>
+    <script type="text/javascript">
+        var ue = UE.getEditor('editor', {
+            serverUrl: "/upload/"
+        })
+    </script>
+
+    <div class="col-md-1"></div>
+    <div class="col-lg-10 col-md-12">
+        <form action="" method="post" name="addPerson" enctype="multipart/form-data">
+            <div >
+                <h3>Add a new Project</h3>
+            </div>
+
+            <div class="input-group" style="margin-bottom:10px;">
+                <label id="labelName" class="input-group-addon">First Name: </label>
+                {{ form.name(**{'class':'form-control', 'aria-describedby':'labelName'}) }}
+            </div>
+            {% for error in form.name.errors %}
+                <b style="color:red">{{ error }}</b>
+            {% endfor %}
+
+            <div class="input-group" style="margin-bottom:10px;">
+                <label id="labelPhoto" class="input-group-addon">Photo: </label>
+                {{ form.photo(**{'class':'form-control', 'aria-describedby':'labelLastName'}) }}
+            </div>
+            {% for error in form.photo.errors %}
+                <b style="color:red">{{ error }}</b>
+            {% endfor %}
+
+            <div class="input-group" style="margin-bottom:10px;">
+                <script id="editor" type="text/plain" name="body"></script>
+            </div>
+
+            <br>
+            <input type="submit" name="submit" value="Submit" class="btn btn-primary">
+        </form>
+    </div>
+    <div class="col-md-1"></div>
+{% endblock %}
