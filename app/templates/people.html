@@ -1,32 +1,23 @@
 {% extends "base.html"%}
 {% block content%}
 <div class="container">
-	<div class="col-md-9">	
-		<div class="row">
-			{#% if data['director'] %#}
-			<h4 class="page-header">Directors</h4>
-			{#% for people in data['director'] %#}
-  			<div class="col-sm-6 col-md-3">
-    				<div class="thumbnail">
-     					 <img style="margin-bottom:20px" src={#{url_for("upload",filename=people.photo)}#} alt="people">
-      				<div style="text-align:center">
-					<p><a href=url_for('person')>WEF{#{people.firstname}} {#{people.lastname}#}</p>
-				</div>
-				<div class="text-muted" style="text-align:center">
-					<p>	safg{#{people.position}#}</p>
-				</div>
-				<div>
-					<p><a href="#"><span class=""style="font-size:25px" 						class="glyphicon glyphicon-envelope"></span></a></p>
-				</div>
-			</div>
-			{#% endfor%#}
-			{#% endif%#}
-		</div>
-
-		
-       			
-  	</div>
+    <div class="col-md-9">
+        {% if data['director']|length > 0 %}
+        <div class="page-header">
+            <h3>Directors</h3>
+        </div>
+        {% for person in data['director'] %}
+            <div class="col-md-6 col-sm-12">
+                <div class="thumbnail">
+                    <img src="{{url_for('static',filename=('uploads/'+ person.photo)) }}" alt="{{ person.firstname + person.lastname }}" />
+                    <div class="caption">
+                        <h3 style="text-align: center">{{ person.firstname + ' ' + person.lastname }}</h3>
+                        <h5 style="text-align: center" class="text-muted">Director</h5>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        {% endif %}
+    </div>
 </div>
-
-
 {% endblock %}

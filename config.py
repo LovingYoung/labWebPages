@@ -6,8 +6,8 @@ SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
 
 SECRET_KEY='SNLab'
 
-UPLOAD_FOLDER= os.path.join(basedir, 'app/uploads')
+UPLOAD_FOLDER= os.path.join(basedir, 'app/static/uploads')
 ALLOWED_EXTENSIONS=set(['jpg', 'png','jpeg','JPG','PNG','JPEG'])
 
-POSITION = ['directory', 'faculty', 'visitingresearcher', 'postdoc', 'graduatestudent', 'undergraduate', 'staff', 'alumni']
-POSITION_SHOW = ['Directory', 'Faculty', 'Visiting Research', 'Postdoc', 'Graduate Student', 'Undergraduate', 'Staff', 'Alumni']
+POSITION = ['director', 'faculty', 'visitingresearcher', 'postdoc', 'graduatestudent', 'undergraduate', 'staff', 'alumni']
+POSITION_SHOW = ['Director', 'Faculty', 'Visiting Research', 'Postdoc', 'Graduate Student', 'Undergraduate', 'Staff', 'Alumni']

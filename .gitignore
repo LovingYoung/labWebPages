@@ -68,4 +68,4 @@ target/
 app.db
 db_repsitory/
 app/static/ueditor/php/upload/
-app/uploads/
+app/static/uploads/

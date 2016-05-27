@@ -1,3 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
+    <div class="container">
+        {% if data|length <= 0 %}
+            404 Not Found
+        {% else %}
+            {% for project in data %}
+                <div class="col-md-3 col-sm-12">
+                    <div class="thumbnail">
+                        <img src="{{ url_for('static', filename='uploads/'+project.photo)}}" alt="{{ project.name }}">
+                        <div class="caption">
+                            <h5><a href="{{ url_for('project', id=project.projectid)}}">{{project.name}}</a></h5>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
 {% endblock %}
