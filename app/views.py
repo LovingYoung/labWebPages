@@ -236,7 +236,10 @@ def read(id):
 @app.route('/about')
 def about():
     post = models.Post.query.filter_by(type='about').order_by(models.Post.modifiedTime.desc()).first()
-    return render_template("about.html", data=post)
+    user = None
+    if post is not None:
+        user = post.author
+    return render_template("about.html", data=post, uesr=user)
 
 
 @app.route('/people')
