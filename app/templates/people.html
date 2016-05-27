@@ -3,25 +3,82 @@
 <div class="container">
 	<div class="col-md-9">	
 		<div class="row">
-			{#% if data['director'] %#}
+			{% if data['director'] %}
 			<h4 class="page-header">Directors</h4>
-			{#% for people in data['director'] %#}
+			{% for people in data['director'] %}
   			<div class="col-sm-6 col-md-3">
     				<div class="thumbnail">
-     					 <img style="margin-bottom:20px" src={#{url_for("upload",filename=people.photo)}#} alt="people">
+     					 <img style="margin-bottom:20px" src={{url_for("upload",filename=people.photo)}} alt="people">
       				<div style="text-align:center">
-					<p><a href=url_for('person')>WEF{#{people.firstname}} {#{people.lastname}#}</p>
+					<p><a href={{url_for('people',id=people.id)}}>{{people.firstname}} {{people.lastname}}</a></p>
 				</div>
 				<div class="text-muted" style="text-align:center">
-					<p>	safg{#{people.position}#}</p>
+					<p>{{people.position}}</p>
 				</div>
 				<div>
-					<p><a href="#"><span class=""style="font-size:25px" 						class="glyphicon glyphicon-envelope"></span></a></p>
+					<p><center>
+					<a href="#">
+					<span style="font-size:25px" class="glyphicon glyphicon-envelope"> </span></a>
+					<a href={{url_for(people.personalpage)}}>
+					<span class="glyphicon glyphicon-user" style="font-size:25px"></span></a>
+					</center></p>
 				</div>
 			</div>
-			{#% endfor%#}
-			{#% endif%#}
+			{% endfor%}
+			{% endif%}
 		</div>
+		<div class="row">
+			{% if data['faculty'] %}
+			<h4 class="page-header">Faculty</h4>
+			{% for people in data['faculty'] %}
+  			<div class="col-sm-6 col-md-3">
+    				<div class="thumbnail">
+     					 <img style="margin-bottom:20px" src={{url_for("upload",filename=people.photo)}} alt="people">
+      				<div style="text-align:center">
+					<p><a href={{url_for('people',id=people.id)}}>{{people.firstname}} {{people.lastname}}</a></p>
+				</div>
+				<div class="text-muted" style="text-align:center">
+					<p>{{people.position}}</p>
+				</div>
+				<div>
+					<p><center>
+					<a href="#">
+					<span style="font-size:25px" class="glyphicon glyphicon-envelope"> </span></a>
+					<a href={{url_for(people.personalpage)}}>
+					<span class="glyphicon glyphicon-user" style="font-size:25px"></span></a>
+					</center></p>
+				</div>
+			</div>
+			{% endfor%}
+			{% endif%}
+		</div>
+	<div class="row">
+			{% if data['visitingresearchers'] %}
+			<h4 class="page-header">Visiting Researchers</h4>
+			{% for people in data['visitingresearchers'] %}
+  			<div class="col-sm-6 col-md-3">
+    				<div class="thumbnail">
+     					 <img style="margin-bottom:20px" src={{url_for("upload",filename=people.photo)}} alt="people">
+      				<div style="text-align:center">
+					<p><a href={{url_for('people',id=people.id)}}>{{people.firstname}} {{people.lastname}}</a></p>
+				</div>
+				<div class="text-muted" style="text-align:center">
+					<p>{{people.position}}</p>
+				</div>
+				<div>
+					<p><center>
+					<a href="#">
+					<span style="font-size:25px" class="glyphicon glyphicon-envelope"> </span></a>
+					<a href={{url_for(people.personalpage)}}>
+					<span class="glyphicon glyphicon-user" style="font-size:25px"></span></a>
+					</center></p>
+				</div>
+			</div>
+			{% endfor%}
+			{% endif%}
+		</div>
+		
+		
 
 		
        			
