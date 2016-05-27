@@ -1,5 +1,5 @@
 from app import app
-from wtforms import Form, BooleanField, StringField, PasswordField, SelectField
+from wtforms import Form, BooleanField, StringField, PasswordField, SelectField, FileField
 from wtforms import validators, ValidationError
 
 def usernameCheck(form, field):
@@ -56,4 +56,4 @@ class PeopleForm(Form):
     position = SelectField('Position', [validators.DataRequired(message="Please select Position")], choices=getPosition())
     personalpage = StringField('PersonalPage')
     email = StringField('Email', [validators.Email(message="Please input valid Email"), validators.DataRequired(message="Please input your email")])
-    photo = StringField('Photo', [validators.DataRequired('Please select an Photo')])
+    photo = FileField('Photo')

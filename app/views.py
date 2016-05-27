@@ -2,6 +2,7 @@ from flask import render_template, request, redirect, flash, make_response
 from app import app, forms, db, models, login_manager
 from app.uploader import Uploader
 from flask.ext.login import current_user, login_required, login_user, logout_user
+from werkzeug.utils import secure_filename
 import hashlib
 import datetime
 import os
@@ -281,9 +282,40 @@ def event():
 def news():
     return render_template("news.html")
 
+@app.route('/addPerson', methods=['GET', 'POST'])
+@login_required
+def addPerson():
+    form = forms.PeopleForm(request.form)
+    if request.method == 'POST' and form.validate():
+        file = request.files[form.photo.name]
+        if file.filename == "":
+            flash("No file uploaded")
+            return render_template('addPerson.html', form=form)
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            if os.path.isfile(path):
+                flash("File Exists, Please rename your file")
+                return render_template('addPerson.html', form=form)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        else:
+            flash('File format not supported, Retry Please.')
+            return render_template('addPerson.html', form=form)
+        person = models.People(
+            userid=current_user.id,
+            firstname=form.firstname.data,
+            lastname=form.lastname.data,
+            position=form.position.data,
+            personalpage=form.personalpage.data,
+            email=form.email.data,
+            photo=filename,
+            createdTime=datetime.datetime.now(),
+            modifiedTime=datetime.datetime.now(),
+        )
+        db.session.add(person)
+        db.session.commit()
+        return redirect('index')
+    return render_template("addPerson.html", form=form, title='Add new person')
 
-
-
-
-
-
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1] in app.config['ALLOWED_EXTENSIONS']

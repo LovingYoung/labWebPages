@@ -66,4 +66,5 @@ target/
 
 *.db
 db_repsitory/
-app/static/ueditor/
+app/static/ueditor/php/upload/
+app/uploads/

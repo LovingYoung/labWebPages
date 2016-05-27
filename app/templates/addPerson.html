@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block content %}
+    <script type="text/javascript" charset="utf-8" src="{{ url_for('static', filename='ueditor/ueditor.config.js') }}"></script>
+    <script type="text/javascript" charset="utf-8" src="{{ url_for('static', filename='ueditor/ueditor.all.min.js') }}"> </script>
+    <script type="text/javascript" charset="utf-8" src="{{ url_for('static', filename='ueditor/lang/en/en.js') }}"></script>
+    <div class="container">
+        {#<div class="col-lg-1 hidden-md"></div>#}
+        <div class="col-lg-10 col-md-12">
+            <form action="" method="post" name="addPerson" enctype="multipart/form-data">
+                <div >
+                    <h3>Add a new Person</h3>
+                </div>
+                <div class="input-group" style="margin-bottom:10px;">
+                    <label id="labelFirstName" class="input-group-addon">First Name: </label>
+                    {{ form.firstname(**{'class':'form-control', 'aria-describedby':'labelFirstName'}) }}
+                </div>
+                {% for error in form.firstname.errors %}
+                    <b style="color:red">{{ error }}</b>
+                {% endfor %}
+                <div class="input-group" style="margin-bottom:10px;">
+                    <label id="labelLastName" class="input-group-addon">Last Name: </label>
+                    {{ form.lastname(**{'class':'form-control', 'aria-describedby':'labelLastName'}) }}
+                </div>
+                {% for error in form.lastname.errors %}
+                    <b style="color:red">{{ error }}</b>
+                {% endfor %}
+                <div class="input-group" style="margin-bottom:10px;">
+                    <label id="labelPhoto" class="input-group-addon">Photo: </label>
+                    {{ form.photo(**{'class':'form-control', 'aria-describedby':'labelLastName'}) }}
+                </div>
+                {% for error in form.photo.errors %}
+                    <b style="color:red">{{ error }}</b>
+                {% endfor %}
+                <div class="input-group" style="margin-bottom:10px;">
+                    <label id="labelEmail" class="input-group-addon">Email: </label>
+                    {{ form.email(**{'class':'form-control', 'aria-describedby':'labelEmail'}) }}
+                </div>
+                {% for error in form.email.errors %}
+                    <b style="color:red">{{ error }}</b>
+                {% endfor %}
+                <div class="input-group" style="margin-bottom:10px;">
+                    <label id="labelPersonalPage" class="input-group-addon">Personal Page: </label>
+                    {{ form.email(**{'class':'form-control', 'aria-describedby':'labelPersonalPage'}) }}
+                </div>
+                {% for error in form.personalpage.errors %}
+                    <b style="color:red">{{ error }}</b>
+                {% endfor %}
+                <div class="input-group" style="margin-bottom:10px;">
+                    <label id="labelPosition" class="input-group-addon">Position: </label>
+                    {{ form.position(**{'class':'form-control', 'aria-describedby':'labelPosition'}) }}
+                </div>
+                {% for error in form.position.errors %}
+                    <b style="color:red">{{ error }}</b>
+                {% endfor %}
+                <br>
+                <input type="submit" name="submit" value="Submit" class="btn btn-primary">
+            </form>
+        </div>
+        <div class="col-lg-1 hidden-md"></div>
+    </div>
+{% endblock %}
