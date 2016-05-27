@@ -1,22 +1,32 @@
 {% extends "base.html"%}
 {% block content%}
 <div class="container">
-	<div class="col-md-9">
-		<h4 class="page-header">Directors</h4>
+	<div class="col-md-9">	
 		<div class="row">
-			<div class="col-md-3">
-				<img src={{ url_for("static", filename="images/pic.jpg")}} />
-				<a><center>MICHAEL</center></a>
-				<p class="text-muted"><center>director</center></p>	
+			{#% if data['director'] %#}
+			<h4 class="page-header">Directors</h4>
+			{#% for people in data['director'] %#}
+  			<div class="col-sm-6 col-md-3">
+    				<div class="thumbnail">
+     					 <img style="margin-bottom:20px" src={#{url_for("upload",filename=people.photo)}#} alt="people">
+      				<div style="text-align:center">
+					<p><a href=url_for('person')>WEF{#{people.firstname}} {#{people.lastname}#}</p>
+				</div>
+				<div class="text-muted" style="text-align:center">
+					<p>	safg{#{people.position}#}</p>
+				</div>
+				<div>
+					<p><a href="#"><span class=""style="font-size:25px" 						class="glyphicon glyphicon-envelope"></span></a></p>
+				</div>
 			</div>
-				<div class="col-md-3">
-				<img src={{ url_for("static", filename="images/pic.jpg")}} />
-				<a>MICHAEL</a>
-				<p class="text-muted">director</p>	
-			</div>
+			{#% endfor%#}
+			{#% endif%#}
 		</div>
-	</div>
 
+		
+       			
+  	</div>
 </div>
+
 
 {% endblock %}
