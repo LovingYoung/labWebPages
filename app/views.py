@@ -263,7 +263,16 @@ def people():
 
 @app.route('/paper')
 def paper():
-    return render_template("paper.html")
+    id = request.args.get('id')
+    if id is None or id == "":
+        data = models.Paper.query.order_by(models.Paper.publishTime.desc()).all()
+        return render_template("paper.html", data=data)
+    else:
+        data = models.Paper.query.filter_by(paperid=id).first()
+        user = None
+        if data is not None:
+            user = data.author
+        return render_template("PaperDetails.html", data=data, user=user)
 
 
 @app.route('/project')

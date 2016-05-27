@@ -3,6 +3,7 @@
 <div class="container">
     <div class="col-md-9">
         {% if data['director']|length > 0 %}
+        <div class="row">
         <div class="page-header">
             <h3>Directors</h3>
         </div>
@@ -16,8 +17,10 @@
                     </div>
                 </div>
             </div>
+        </div>
         {% endfor %}
+        </div>
         {% endif %}
-    </div>
+
 </div>
 {% endblock %}

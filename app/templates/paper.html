@@ -1,14 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="container">
-	<div class="col-md-9">
-		<div class="page-header"><h3>Publications</h3></div>
-		<div class="text-muted"><h3><b>2016</b></h3></div>
-		<div style="margin-bottom:20px">
-			<div><h4><a href="#">sag</a></h4></div>
-			<div><h4>jsafelhkk</h4></div>
-			<div class="text-muted"><h4>time</h4></div>
-		</div>
+    <div class="col-md-9">
+    <div class="page-header"><h3>Publications</h3></div>
+    {% if data|length <= 0 %}
+        <h1 style="color: red;">No Data</h1>
+    {% else  %}
+        {% for paper in data%}
+            <div style="margin-bottom:20px">
+                <div><h4><a href="{{ url_for('paper', id=paper.paperid) }}">{{ paper.name }}</a></h4></div>
+                <!--<div><h4></h4></div>-->
+                <div class="text-muted"><h4>{{ paper.publishTime.strftime('%Y-%m-%d') }}</h4></div>
+            </div>
+        {% endfor %}
+    {% endif %}
 	</div>
 </div>
 	

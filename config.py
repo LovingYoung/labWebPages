@@ -10,4 +10,4 @@ UPLOAD_FOLDER= os.path.join(basedir, 'app/static/uploads')
 ALLOWED_EXTENSIONS=set(['jpg', 'png','jpeg','JPG','PNG','JPEG'])
 
 POSITION = ['director', 'faculty', 'visitingresearcher', 'postdoc', 'graduatestudent', 'undergraduate', 'staff', 'alumni']
-POSITION_SHOW = ['Director', 'Faculty', 'Visiting Research', 'Postdoc', 'Graduate Student', 'Undergraduate', 'Staff', 'Alumni']
+POSITION_SHOW = ['Director', 'Faculty', 'Visiting Researcher', 'Postdoc', 'Graduate Student', 'Undergraduate', 'Staff', 'Alumni']
