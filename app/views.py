@@ -234,11 +234,8 @@ def read():
 
 @app.route('/about')
 def about():
-    post = models.Post.query.filter_by(type='about').order_by(models.Post.modifiedTime.desc()).first()
-    user = None
-    if post is not None:
-        user = post.author
-    return render_template("about.html", data=post, user=user)
+    data = models.Post.query.filter_by(type='about').order_by(models.Post.modifiedTime.desc()).first()
+    return render_template("read.html", data=data)
 
 
 @app.route('/people')
@@ -301,8 +298,10 @@ def blog():
 
 @app.route('/sponsor')
 def sponsor():
-    return render_template("sponsor.html")
-
+    id = request.args.get('id')
+    if id is None or id == "":
+        data = models.Post.query.filter_by(type="sponsor").all()
+        return render_template("sponsor.html",data=data)
 
 @app.route('/event')
 def event():
