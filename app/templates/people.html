@@ -32,7 +32,7 @@
                             <img src="{{url_for('static',filename=('uploads/'+ person.photo)) }}" alt="{{ person.firstname + person.lastname }}" />
                             <div class="caption">
                                 <h3 style="text-align: center">{{ person.firstname + ' ' + person.lastname }}</h3>
-                                <h5 style="text-align: center" class="text-muted">Director</h5>
+                                <h5 style="text-align: center" class="text-muted">Faculty</h5>
                             </div>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                             <img src="{{url_for('static',filename=('uploads/'+ person.photo)) }}" alt="{{ person.firstname + person.lastname }}" />
                             <div class="caption">
                                 <h3 style="text-align: center">{{ person.firstname + ' ' + person.lastname }}</h3>
-                                <h5 style="text-align: center" class="text-muted">Director</h5>
+                                <h5 style="text-align: center" class="text-muted">Visiting Researchers</h5>
                             </div>
                         </div>
                     </div>
@@ -69,7 +69,7 @@
                             <img src="{{url_for('static',filename=('uploads/'+ person.photo)) }}" alt="{{ person.firstname + person.lastname }}" />
                             <div class="caption">
                                 <h3 style="text-align: center">{{ person.firstname + ' ' + person.lastname }}</h3>
-                                <h5 style="text-align: center" class="text-muted">Director</h5>
+                                <h5 style="text-align: center" class="text-muted">Postdocs</h5>
                             </div>
                         </div>
                     </div>
@@ -87,7 +87,7 @@
                             <img src="{{url_for('static',filename=('uploads/'+ person.photo)) }}" alt="{{ person.firstname + person.lastname }}" />
                             <div class="caption">
                                 <h3 style="text-align: center">{{ person.firstname + ' ' + person.lastname }}</h3>
-                                <h5 style="text-align: center" class="text-muted">Director</h5>
+                                <h5 style="text-align: center" class="text-muted">Graduate Students</h5>
                             </div>
                         </div>
                     </div>
@@ -105,7 +105,7 @@
                             <img src="{{url_for('static',filename=('uploads/'+ person.photo)) }}" alt="{{ person.firstname + person.lastname }}" />
                             <div class="caption">
                                 <h3 style="text-align: center">{{ person.firstname + ' ' + person.lastname }}</h3>
-                                <h5 style="text-align: center" class="text-muted">Director</h5>
+                                <h5 style="text-align: center" class="text-muted">Undergraduates</h5>
                             </div>
                         </div>
                     </div>
@@ -115,7 +115,7 @@
         {% if data['staff']|length > 0 %}
             <div class="row">
                 <div class="page-header">
-                    <h3>Directors</h3>
+                    <h3>Staff</h3>
                 </div>
                 {% for person in data['staff'] %}
                     <div class="col-md-3 col-sm-6 col-xs-12">
@@ -123,7 +123,7 @@
                             <img src="{{url_for('static',filename=('uploads/'+ person.photo)) }}" alt="{{ person.firstname + person.lastname }}" />
                             <div class="caption">
                                 <h3 style="text-align: center">{{ person.firstname + ' ' + person.lastname }}</h3>
-                                <h5 style="text-align: center" class="text-muted">Director</h5>
+                                <h5 style="text-align: center" class="text-muted">Staff</h5>
                             </div>
                         </div>
                     </div>
@@ -143,7 +143,7 @@
                             <img src="{{url_for('static',filename=('uploads/'+ person.photo)) }}" alt="{{ person.firstname + person.lastname }}" />
                             <div class="caption">
                                 <h3 style="text-align: center">{{ person.firstname + ' ' + person.lastname }}</h3>
-                                <h5 style="text-align: center" class="text-muted">Director</h5>
+                                <h5 style="text-align: center" class="text-muted">Alumni</h5>
                             </div>
                         </div>
                     </div>
