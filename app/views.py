@@ -220,8 +220,11 @@ def create():
         return render_template('create.html', form=form)
 
 
-@app.route('/read/<int:id>')
-def read(id):
+@app.route('/read')
+def read():
+    id = request.args.get('id')
+    if id is None or id == "":
+        return "404 Not found"
     data = models.Post.query.filter_by(postid=id).first()
     if data is None:
         flash("Sorry, Invalid rename & modify some htmURL")
@@ -231,11 +234,8 @@ def read(id):
 
 @app.route('/about')
 def about():
-    post = models.Post.query.filter_by(type='about').order_by(models.Post.modifiedTime.desc()).first()
-    user = None
-    if post is not None:
-        user = post.author
-    return render_template("about.html", data=post, user=user)
+    data = models.Post.query.filter_by(type='about').order_by(models.Post.modifiedTime.desc()).first()
+    return render_template("read.html", data=data)
 
 
 @app.route('/people')
@@ -296,13 +296,21 @@ def software():
 
 @app.route('/blog')
 def blog():
-    return render_template("blog.html")
+    id = request.args.get('id')
+    if id is None or id == "":
+        data = models.Post.query.filter_by(type="blog").order_by(models.Post.modifiedTime.desc()).all()
+        return render_template("blog.html",data=data)
+    else:
+        return redirect(url_for('read', id=id))
+
 
 
 @app.route('/sponsor')
 def sponsor():
-    return render_template("sponsor.html")
-
+    id = request.args.get('id')
+    if id is None or id == "":
+        data = models.Post.query.filter_by(type="sponsor").all()
+        return render_template("sponsor.html",data=data)
 
 @app.route('/event')
 def event():
