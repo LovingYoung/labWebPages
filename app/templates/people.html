@@ -17,10 +17,139 @@
                     </div>
                 </div>
             </div>
-        </div>
         {% endfor %}
-        </div>
+            </div>
         {% endif %}
 
+        {% if data['faculty']|length > 0 %}
+            <div class="row">
+                <div class="page-header">
+                    <h3>Faculty</h3>
+                </div>
+                {% for person in data['faculty'] %}
+                    <div class="col-md-6 col-sm-12">
+                        <div class="thumbnail">
+                            <img src="{{url_for('static',filename=('uploads/'+ person.photo)) }}" alt="{{ person.firstname + person.lastname }}" />
+                            <div class="caption">
+                                <h3 style="text-align: center">{{ person.firstname + ' ' + person.lastname }}</h3>
+                                <h5 style="text-align: center" class="text-muted">Director</h5>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% if data['visitingresearcher']|length > 0 %}
+            <div class="row">
+                <div class="page-header">
+                    <h3>Visiting Researchers</h3>
+                </div>
+                {% for person in data['visitingresearcher'] %}
+                    <div class="col-md-6 col-sm-12">
+                        <div class="thumbnail">
+                            <img src="{{url_for('static',filename=('uploads/'+ person.photo)) }}" alt="{{ person.firstname + person.lastname }}" />
+                            <div class="caption">
+                                <h3 style="text-align: center">{{ person.firstname + ' ' + person.lastname }}</h3>
+                                <h5 style="text-align: center" class="text-muted">Director</h5>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% if data['postdoc']|length > 0 %}
+            <div class="row">
+                <div class="page-header">
+                    <h3>Postdocs</h3>
+                </div>
+                {% for person in data['postdoc'] %}
+                    <div class="col-md-6 col-sm-12">
+                        <div class="thumbnail">
+                            <img src="{{url_for('static',filename=('uploads/'+ person.photo)) }}" alt="{{ person.firstname + person.lastname }}" />
+                            <div class="caption">
+                                <h3 style="text-align: center">{{ person.firstname + ' ' + person.lastname }}</h3>
+                                <h5 style="text-align: center" class="text-muted">Director</h5>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% if data['graduatestudent']|length > 0 %}
+            <div class="row">
+                <div class="page-header">
+                    <h3>Graduate Students</h3>
+                </div>
+                {% for person in data['graduatestudent'] %}
+                    <div class="col-md-6 col-sm-12">
+                        <div class="thumbnail">
+                            <img src="{{url_for('static',filename=('uploads/'+ person.photo)) }}" alt="{{ person.firstname + person.lastname }}" />
+                            <div class="caption">
+                                <h3 style="text-align: center">{{ person.firstname + ' ' + person.lastname }}</h3>
+                                <h5 style="text-align: center" class="text-muted">Director</h5>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% if data['undergraduate']|length > 0 %}
+            <div class="row">
+                <div class="page-header">
+                    <h3>Undergraduates</h3>
+                </div>
+                {% for person in data['undergraduate'] %}
+                    <div class="col-md-6 col-sm-12">
+                        <div class="thumbnail">
+                            <img src="{{url_for('static',filename=('uploads/'+ person.photo)) }}" alt="{{ person.firstname + person.lastname }}" />
+                            <div class="caption">
+                                <h3 style="text-align: center">{{ person.firstname + ' ' + person.lastname }}</h3>
+                                <h5 style="text-align: center" class="text-muted">Director</h5>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% if data['staff']|length > 0 %}
+            <div class="row">
+                <div class="page-header">
+                    <h3>Directors</h3>
+                </div>
+                {% for person in data['staff'] %}
+                    <div class="col-md-6 col-sm-12">
+                        <div class="thumbnail">
+                            <img src="{{url_for('static',filename=('uploads/'+ person.photo)) }}" alt="{{ person.firstname + person.lastname }}" />
+                            <div class="caption">
+                                <h3 style="text-align: center">{{ person.firstname + ' ' + person.lastname }}</h3>
+                                <h5 style="text-align: center" class="text-muted">Director</h5>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    <div class="col-md-9">
+        {% if data['alumni']|length > 0 %}
+            <div class="row">
+                <div class="page-header">
+                    <h3>Alumni</h3>
+                </div>
+                {% for person in data['alumni'] %}
+                    <div class="col-md-6 col-sm-12">
+                        <div class="thumbnail">
+                            <img src="{{url_for('static',filename=('uploads/'+ person.photo)) }}" alt="{{ person.firstname + person.lastname }}" />
+                            <div class="caption">
+                                <h3 style="text-align: center">{{ person.firstname + ' ' + person.lastname }}</h3>
+                                <h5 style="text-align: center" class="text-muted">Director</h5>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}
