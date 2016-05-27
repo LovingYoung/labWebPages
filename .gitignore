@@ -64,6 +64,6 @@ target/
 #Pycharm
 .idea/
 
-app.db
+*.db
 db_repsitory/
-static/ueditor/
+app/static/ueditor/
