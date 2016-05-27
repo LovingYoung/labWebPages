@@ -7,7 +7,7 @@
             {% for project in data %}
                 <div class="col-md-3 col-sm-12">
                     <div class="thumbnail">
-                        <img src="{{ url_for('static', filename='uploads/'+project.photo)}}" alt="{{ project.name }}">
+                        <a href="{{ url_for('project',id=project.projectid) }}"><img src="{{ url_for('static', filename='uploads/'+project.photo)}}" alt="{{ project.name }}"></a>
                         <div class="caption">
                             <h5><a href="{{ url_for('project', id=project.projectid)}}">{{project.name}}</a></h5>
                         </div>
