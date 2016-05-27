@@ -240,18 +240,25 @@ def about():
 
 @app.route('/people')
 def people():
-    data = {}
-    peoples = models.People.query.order_by(models.People.firstname).all()
-    for position in app.config['POSITION']:
-        data[position] = []
-    for people in peoples:
-        i = 0
-        while i < len(app.config['POSITION']):
-            if people.position == app.config['POSITION'][i]:
-                data[app.config['POSITION'][i]].append(people)
-                break
-            i += 1
-    return render_template("people.html", data=data)
+    id = request.args.get('id')
+    if id is None or id == "":
+        data = {}
+        peoples = models.People.query.order_by(models.People.firstname).all()
+        for position in app.config['POSITION']:
+            data[position] = []
+        for people in peoples:
+            i = 0
+            while i < len(app.config['POSITION']):
+                if people.position == app.config['POSITION'][i]:
+                    data[app.config['POSITION'][i]].append(people)
+                    break
+                i += 1
+        return render_template("people.html", data=data)
+    else:
+        data = models.People.query.filter_by(peoplei=id).first()
+        if data is None:
+            return "<h1>404 Not Found</h1>"
+        return render_template("PeopleDetails.html", data=data)
 
 
 @app.route('/paper')
