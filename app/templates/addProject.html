@@ -18,7 +18,7 @@
             </div>
 
             <div class="input-group" style="margin-bottom:10px;">
-                <label id="labelName" class="input-group-addon">First Name: </label>
+                <label id="labelName" class="input-group-addon">Name: </label>
                 {{ form.name(**{'class':'form-control', 'aria-describedby':'labelName'}) }}
             </div>
             {% for error in form.name.errors %}
