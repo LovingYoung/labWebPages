@@ -223,44 +223,59 @@ def create():
     else:
         return render_template('create.html', form=form)
 
+
 @app.route('/read/<int:id>')
 def read(id):
     data = models.Post.query.filter_by(postid=id).first()
     if data is None:
-        flash("Sorry, Invalid URL")
+        flash("Sorry, Invalid rename & modify some htmURL")
         return redirect('index')
     return render_template('read.html', data=data)
 
 
 @app.route('/about')
 def about():
-	return render_template("about.html");
+    return render_template("about.html")
+
+
 @app.route('/people')
 def people():
-	return render_template("people.html");
+    return render_template("people.html")
+
 
 @app.route('/paper')
 def paper():
-	return render_template("paper.html");
+    return render_template("paper.html")
+
+
 @app.route('/project')
 def project():
-	return render_template("project.html");
+    return render_template("project.html")
+
+
 @app.route('/software')
 def software():
-	return render_template("software.html");
+    return render_template("software.html")
+
+
 @app.route('/blog')
 def blog():
-	return render_template("blog.html");
+    return render_template("blog.html")
+
 
 @app.route('/sponsor')
 def sponsor():
-	return render_template("sponsor.html");
+    return render_template("sponsor.html")
+
+
 @app.route('/event')
 def event():
-	return render_template("event.html");
+    return render_template("event.html")
+
+
 @app.route('/news')
 def news():
-	return render_template("news.html");
+    return render_template("news.html")
 
 
 
