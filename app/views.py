@@ -202,9 +202,8 @@ def manage():
         data = models.Project.query.order_by(models.Project.modifiedTime.desc()).all()
         return render_template('manageProjects.html', data = data)
     elif Type == "Papers":
-        data = models.Paper.query.order_by(models.Paper.modifiedTime.desc()).all()
+        data = models.Paper.query.order_by(models.Paper.publishTime.desc()).all()
         return render_template('managePapers.html', data = data)
-
     else:
         return render_template('manage.html')
 
