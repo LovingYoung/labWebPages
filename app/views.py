@@ -245,7 +245,18 @@ def about():
 
 @app.route('/people')
 def people():
-    return render_template("people.html")
+    data = {}
+    peoples = models.People.query.order_by(models.People.firstname).all()
+    for position in app.config['POSITION']:
+        data[position] = []
+    for people in peoples:
+        i = 0
+        while i < len(app.config['POSITION']):
+            if people.position == app.config['POSITION'][i]:
+                data[app.config['POSITION'][i]].append(people)
+                break
+            i += 1
+    return render_template("people.html", data=data)
 
 
 @app.route('/paper')

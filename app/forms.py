@@ -19,14 +19,10 @@ def getPostChoice():
 
 def getPosition():
     a = []
-    a.append(('director', 'Director'))
-    a.append(('faculty', 'Faculty'))
-    a.append(('visitingresearcher', 'Visiting Researcher'))
-    a.append(('postdoc', 'Postdoc'))
-    a.append(('graduatestudent', 'Graduate Student'))
-    a.append(('undergraduate', 'Undergraduate'))
-    a.append(('staff', 'Staff'))
-    a.append(('alumni', 'Alumni'))
+    i = 0
+    while i < len(app.config['POSITION']):
+        a.append((app.config['POSITION'][i], app.config['POSITION_SHOW'][i]))
+        i += 1
     return a
 
 class RegisterForm(Form):
