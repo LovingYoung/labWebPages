@@ -7,6 +7,7 @@ class User(db.Model):
     posts = db.relationship('Post', backref='author', lazy='dynamic')
     projects = db.relationship('Project', backref='author', lazy='dynamic')
     people = db.relationship('People', backref='author', lazy='dynamic')
+    papers = db.relationship('Paper', backref='author', lazy='dynamic')
 
     def __repr__(self):
         return "<User %r>" % (self.username)
@@ -58,3 +59,13 @@ class Project(db.Model):
     photo = db.Column(db.String(256))
     createdTime = db.Column(db.DateTime)
     modifiedTime = db.Column(db.DateTime)
+
+class Paper(db.Model):
+     userid = db.Column(db.Integer, db.ForeignKey('user.id'))
+     paperid = db.Column(db.Integer, primary_key=True, nullable=False)
+     name = db.Column(db.String(512))
+     pdf = db.Column(db.String(256))
+     abstract = db.Column(db.TEXT)
+     publishTime = db.Column(db.DateTime)
+     createdTime = db.Column(db.DateTime)
+     modifiedTime = db.Column(db.DateTime)

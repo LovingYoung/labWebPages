@@ -1,5 +1,5 @@
 from app import app
-from wtforms import Form, BooleanField, StringField, PasswordField, SelectField, FileField
+from wtforms import Form, BooleanField, StringField, PasswordField, SelectField, FileField, DateField
 from wtforms import validators, ValidationError
 
 def usernameCheck(form, field):
@@ -58,3 +58,9 @@ class ProjectForm(Form):
     name = StringField('ProjectName', [validators.DataRequired(message="Please input Project Name"), validators.Length(max=500, message="Please decreate project name to 500 letters or less")])
     body = StringField('ProjectBody', [validators.DataRequired(message="Please input Project body")])
     photo = FileField('Photo')
+
+class PaperForm(Form):
+    name = StringField('PaperName', [validators.DataRequired(message="Please input Paper Name"), validators.Length(max=500, message="Please decrease project name to 500 letters or less")])
+    abstract = StringField('PaperAbstract', [validators.DataRequired(message="Please input Abstract")])
+    publishTime = DateField('PaperPublishTime', [validators.DataRequired(message="Please pick Publish Time")])
+    pdf = FileField('PDF')

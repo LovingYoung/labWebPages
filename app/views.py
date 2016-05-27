@@ -339,8 +339,11 @@ def addPerson():
         return redirect('index')
     return render_template("addPerson.html", form=form, title='Add new person')
 
-def allowed_file(filename):
-    return '.' in filename and filename.rsplit('.', 1)[1] in app.config['ALLOWED_EXTENSIONS']
+def allowed_file(filename, extension=None):
+    if extension is None:
+        extension = app.config['ALLOWED_EXT']
+    return '.' in filename and filename.rsplit('.', 1)[1] in extension
+
 
 @app.route("/addProject", methods=['GET', 'POST'])
 @login_required
@@ -373,3 +376,37 @@ def addProject():
         db.session.commit()
         return redirect('index')
     return render_template("addProject.html", form=form, title='Add new person')
+
+
+@app.route('/addPaper', methods=['GET', 'POST'])
+@login_required
+def addPaper():
+    form = forms.PaperForm(request.form)
+    if request.method == 'POST' and form.validate():
+        file = request.files[form.pdf.name]
+        if file.filename == "":
+            flash("No file uploaded")
+            return render_template('addPaper.html', form=form)
+        if file and allowed_file(file.filename, ['pdf', 'PDF']):
+            filename = secure_filename(file.filename)
+            path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            if os.path.isfile(path):
+                flash("File Exists, Please rename your file")
+                return render_template('addPaper.html', form=form)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        else:
+            flash('File format not supported, Retry Please.')
+            return render_template('addPaper.html', form=form)
+        paper = models.Paper(
+            userid=current_user.id,
+            name=form.name.data,
+            abstract=form.abstract.data,
+            publishTime=form.publishTime.data,
+            createdTime=datetime.datetime.now(),
+            modifiedTime=datetime.datetime.now(),
+            pdf=filename
+        )
+        db.session.add(paper)
+        db.session.commit()
+        return redirect('index')
+    return render_template("addPaper.html", form=form, title='Add new paper')
