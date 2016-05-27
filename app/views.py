@@ -191,21 +191,18 @@ def logout():
 @app.route('/manage')
 @login_required
 def manage():
-    return render_template('manage.html')
-
-
-@app.route('/manage/<Type>')
-@login_required
-def manage(Type):
+    Type = request.args.get('Type')
     if Type == "Posts":
         data = models.Post.query.order_by(models.Post.modifiedTime.desc()).all()
         return render_template('managePosts.html', data = data)
     elif Type == "Peoples":
         data = models.People.query.order_by(models.People.firstname).all()
-        return render_template('managePeoples.html', data = data)
+        return render_template('managePeople.html', data = data)
     elif Type == "Projects":
         data = models.Project.query.order_by(models.Project.name).all()
-        return render_template('manageProjects.html')
+        return render_template('manageProjects.html', data = data)
+    else:
+        return render_template('manage.html')
 
 
 @app.route('/create', methods=['POST', 'GET'])
