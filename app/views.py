@@ -199,8 +199,9 @@ def manage():
         data = models.People.query.order_by(models.People.firstname).all()
         return render_template('managePeople.html', data = data)
     elif Type == "Projects":
-        data = models.Project.query.order_by(models.Project.name).all()
+        data = models.Project.query.order_by(models.Project.modifiedTime.desc()).all()
         return render_template('manageProjects.html', data = data)
+
     else:
         return render_template('manage.html')
 
@@ -358,7 +359,7 @@ def addPerson():
 
 def allowed_file(filename, extension=None):
     if extension is None:
-        extension = app.config['ALLOWED_EXT']
+        extension = app.config['ALLOWED_EXTENSIONS']
     return '.' in filename and filename.rsplit('.', 1)[1] in extension
 
 

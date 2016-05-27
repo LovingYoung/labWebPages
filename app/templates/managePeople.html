@@ -23,7 +23,7 @@
             {% for person in data %}
                 <tr>
                     <td>
-                        <a href="{{ url_for('read', id=person.peopleid) }}">{{ person.firstname + person.lastname}}</a>
+                        <a href="{{ url_for('people', id=person.peopleid) }}">{{ person.firstname + person.lastname}}</a>
                     </td>
                     <td>
                         {{ person.position}}
