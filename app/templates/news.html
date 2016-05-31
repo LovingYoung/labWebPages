@@ -3,10 +3,13 @@
 <div class="container">
 	<div class="col-md-12">
 		<div class="page-header"><h3>News</h3></div>
+        {% for each in data %}
 		<div style="margin-bottom:20px">
-			<p class="text-muted">TIME</p>
-			<p><a href="#">CAPTION</a></p>
-		</div>	
+			<p class="text-muted">{{each.modifiedTime.strftime('%Y %b %d')}}</p>
+			<h3><a href="{{ url_for('news', id=each.postid) }}" style="color: black">{{each.title}}</a></h3>
+            <p>{{ each.content|safe}}</p>
+		</div>
+        {% endfor %}
 	</div>
 </div>
 	

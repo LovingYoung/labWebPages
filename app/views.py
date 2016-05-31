@@ -292,10 +292,6 @@ def project():
         return render_template("ProjectDetails.html", data = data, user = user)
 
 
-@app.route('/software')
-def software():
-    return render_template("software.html")
-
 
 @app.route('/blog')
 def blog():
@@ -322,7 +318,13 @@ def event():
 
 @app.route('/news')
 def news():
-    return render_template("news.html")
+    id = request.args.get('id')
+    if id is None:
+        data = models.Post.query.filter_by(type='news').order_by(models.Post.modifiedTime.desc()).all()
+        return render_template("news.html", data=data)
+    else:
+        data = models.Post.query.filter_by(postid=id).first()
+        return render_template("read.html", data=data)
 
 
 @app.route('/addPerson', methods=['GET', 'POST'])
