@@ -9,55 +9,49 @@
                 <div class="col-md-8 col-sm-12">
                     <div class="page-header" style="margin-top:10px">
                         <h4>System Network Laboratory</h4>
-			<h5>{{brief}}</h5>				
+                        <h5>{{brief}}</h5>
                     </div>
                 </div>
             </div>
-	    <br/>
+            <br/>
             <div class="row">
                 <div class="col-md-4 col-sm-12">
                     <div class="row page-header" style="margin-top:10px">
                         <div class="col-md-8 col-xs-8"><b>Events</b></div>
                         <div class="col-md-4 col-xs-4"><a href={{url_for('event')}}>&gt;&gt;More</a></div>
-		    </div>
-		    {% for event in events %}	
-                    <div style="margin-bottom:10px">
-                    	<a class="text-muted" href={{url_for(event.src)}}> {{event.content}}</a>
                     </div>
-		    {% endfor %}
+                    {% for event in events %}
+                        <div style="margin-bottom:10px">
+                            <a class="text-muted" href='{{url_for(event.src)}}'> {{event.content}}</a>
+                        </div>
+                    {% endfor %}
                 </div>
 
                 <div class="col-md-4 col-sm-12">
                     <div class="row page-header" style="margin-top:10px">
                         <div class="col-md-8 col-xs-8"><b>Blog</b></div>
-                        <div class="col-md-4 col-xs-4"><a href={{url_for('blog')}}>&gt;&gt;More</a></div>
+                        <div class="col-md-4 col-xs-4"><a href='{{url_for('blog')}}'>&gt;&gt;More</a></div>
                     </div>
-		   {% for blog in blogs%}
-		    <div style="margin-bottom:10px">
-			<div class="col-md-6 col-xs-6">
-			<img src={{url_for("static",filename=blog.person)}} class="img-thumbnail" alt="person"></div>
-			<div class="col-md-6 col-xs-6">	
-				<a href={{url_for(blog.src)}}>{{blog.content}}-{{blog.time}}</a>
-			</div>
-		    </div>
-		   {% endfor %}
+                   {% for blog in blogs%}
+                    <div style="margin-bottom:10px">
+                        <a href='{{url_for('blog', id=blog.postid)}}'>{{blog.title|safe}}</a>&nbsp;&nbsp;&nbsp;{{blog.modifiedTime.strftime('%Y-%b-%d')}}
+                    </div>
+                   {% endfor %}
                 </div>
+
                 <div class="col-md-4 col-sm-12">
                     <div class="row page-header" style="margin-top:10px">
                         <div class="col-md-8 col-xs-8"><b>News</b></div>
-                        <div class="col-md-4 col-xs-4"><a href={{url_for('news')}}>&gt;&gt;More</a></div>
+                        <div class="col-md-4 col-xs-4"><a href={{url_for('blog')}}>&gt;&gt;More</a></div>
                     </div>
-                    <div>
-			<ul>
-				{% for news in newss%}
-				<li style="margin-bottom:10px"><a href={{url_for(news.src)}}>{{news.content}}-{{news.time}}</a></li>
-		   		{% endfor %}
-                        </ul>
-                    </div>
+                    {% for news in newss%}
+                        <div style="margin-bottom:10px">
+                            <a href='{{url_for('news', id=news.postid)}}'>{{news.title|safe}}</a>&nbsp;&nbsp;&nbsp;{{news.modifiedTime.strftime('%Y-%b-%d')}}
+                        </div>
+                    {% endfor %}
+                </div>
 
                 </div>
-            </div>
-	    <br/>
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
@@ -65,12 +59,11 @@
                     </div>
                 </div>
             </div>
-         </div>
+    </div>
 	 <div class="col-md-3 hidden-sm">
 		<h4 class="page-header" style="margin:0px">Partnership</h4>
 		{% for sponsor in sponsors%}
-		<img class="col-md-4" src={{url_for(sponsor.img)}} alt="sponsor"/>
+		<img class="col-md-4" src="{{url_for(sponsor.img)}}" alt="sponsor"/>
 		{% endfor %}
-        </div>
     </div>
 {% endblock %}

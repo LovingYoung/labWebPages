@@ -12,7 +12,10 @@ import re
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template("index.html")
+    events = models.Post.query.filter_by(type='event').order_by(models.Post.modifiedTime).all()[0:2]
+    blogs = models.Post.query.filter_by(type='blog').order_by(models.Post.modifiedTime).all()[0:2]
+    news = models.Post.query.filter_by(type='news').order_by(models.Post.modifiedTime).all()[0:2]
+    return render_template("index.html", events=events, blogs=blogs, newss=news)
 
 @app.route('/upload/', methods=['GET', 'POST', 'OPTIONS'])
 def upload():
