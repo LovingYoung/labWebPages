@@ -241,7 +241,7 @@ def about():
     return render_template("read.html", data=data)
 
 
-@app.route('/people')
+@app.route('/team')
 def people():
     id = request.args.get('id')
     if id is None or id == "":
@@ -264,7 +264,7 @@ def people():
         return render_template("PeopleDetails.html", data=data)
 
 
-@app.route('/paper')
+@app.route('/publications')
 def paper():
     id = request.args.get('id')
     if id is None or id == "":
@@ -278,7 +278,7 @@ def paper():
         return render_template("PaperDetails.html", data=data, user=user)
 
 
-@app.route('/project')
+@app.route('/projects')
 def project():
     id = request.args.get('id')
     if id is None or id == "":
@@ -323,6 +323,7 @@ def event():
 @app.route('/news')
 def news():
     return render_template("news.html")
+
 
 @app.route('/addPerson', methods=['GET', 'POST'])
 @login_required

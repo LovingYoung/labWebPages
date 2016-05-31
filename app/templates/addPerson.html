@@ -37,7 +37,7 @@
                 {% endfor %}
                 <div class="input-group" style="margin-bottom:10px;">
                     <label id="labelPersonalPage" class="input-group-addon">Personal Page: </label>
-                    {{ form.email(**{'class':'form-control', 'aria-describedby':'labelPersonalPage'}) }}
+                    {{ form.personalpage(**{'class':'form-control', 'aria-describedby':'labelPersonalPage'}) }}
                 </div>
                 {% for error in form.personalpage.errors %}
                     <b style="color:red">{{ error }}</b>
