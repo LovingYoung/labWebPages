@@ -31,7 +31,7 @@
                     <td>
                         <a href="#">Edit</a> |
                         <a href="{{ url_for('paper', id=paper.paperid) }}">Detail</a> |
-                        <a href="#">Delete</a>
+                        <a href="{{ url_for('delete', field='publication', id = paper.paperid)}}">Delete</a>
                     </td>
                 </tr>
             {% endfor %}

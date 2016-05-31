@@ -36,8 +36,8 @@
                 </td>
                 <td>
                     <a href="#">Edit</a> |
-                    <a href="#">Detail</a> |
-                    <a href="#">Delete</a>
+                    <a href="{{ url_for('read', id=post.postid) }}">Detail</a> |
+                    <a href="{{ url_for('delete', field='post', id=post.postid) }}">Delete</a>
                 </td>
             </tr>
         {% endfor %}

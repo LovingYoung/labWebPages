@@ -8,10 +8,10 @@
                 </div>
                 <div class="row">
                     <div class="col-md-4 col-sm-12" style="text-align: center">
-                        <p>Created By {{user.username}} At {{ data.createdTime.strftime('%Y-%m-%d') }}</p>
+                        <p>Created At : {{ data.createdTime.strftime('%Y-%m-%d') }}</p>
                     </div>
                     <div class="col-md-4 col-sm-12" style="text-align: center">
-                        <p>ModifiedTime: {{data.modifiedTime.strftime('%Y-%m-%d') }} </p>
+                        <p>Modified At : {{data.modifiedTime.strftime('%Y-%m-%d') }} </p>
                     </div>
                     <div class="col-md-4 col-sm-12" style="text-align: center">
                         <p><a href="{{ url_for('index') }}">Back to Index</a></p>

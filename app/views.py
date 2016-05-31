@@ -436,3 +436,28 @@ def addPaper():
         db.session.commit()
         return redirect('index')
     return render_template("addPaper.html", form=form, title='Add new paper')
+
+@app.route('/delete')
+@login_required
+def delete():
+    field = request.args.get('field')
+    id = request.args.get('id')
+    if field == 'team':
+        people = models.People.query.filter_by(peopleid=id).first()
+        db.session.delete(people)
+        db.session.commit()
+    elif field == 'post':
+        post = models.Post.query.filter_by(postid=id).first()
+        db.session.delete(post)
+        db.session.commit()
+    elif field == 'publication':
+        paper = models.Paper.query.filter_by(paperid=id).first()
+        db.session.delete(paper)
+        db.session.commit()
+    elif field == 'project':
+        project = models.Project.query.filter_by(projectid=id).first()
+        db.session.delete(project)
+        db.session.commit()
+    else:
+        flash("Invalid URL")
+    return redirect(url_for('manage'))
