@@ -158,6 +158,7 @@ def login():
 
 
 @app.route('/register', methods=['GET', 'POST'])
+@login_required
 def register():
     form = forms.RegisterForm(request.form)
     if request.method == 'POST' and form.validate():
